@@ -41,16 +41,17 @@
 
     <!-- Page content -->
     <div class="container-fluid">
-            <h2>{{ course.name }}</h2>
-            <div class="card-columns-vertical">
-                {% for lesson in course.lesson_set.all %}
-                    <div class="card mt-1">
-                        <div class="card-header"><h5>Lesson {{lesson.order|add:1}}: {{lesson.title}}</h5></div>
-                        <div class="card-body">{{lesson.content}}</div>
-                    </div>
-                {% endfor %}
-            </div>
-            <!-- Task: show questions and choices -->
+        <h2>{{ course.name }}</h2>
+        <div class="card-columns-vertical">
+            {% for lesson in course.lesson_set.all %}
+                <div class="card mt-1">
+                    <div class="card-header"><h5>Lesson {{lesson.order|add:1}}: {{lesson.title}}</h5></div>
+                    <div class="card-body">{{lesson.content}}</div>
+                </div>
+            {% endfor %}
+        </div>
+
+                    <!-- Task: show questions and choices -->
             <!-- <HINT> Use Bootstrap Collapse to hide exam first, more details could be found here
             https://www.w3schools.com/bootstrap4/bootstrap_collapse.asp-->
 
@@ -97,12 +98,12 @@
 
             <!--Check here to see more details Bootstrap checkbox
              https://www.w3schools.com/bootstrap4/bootstrap_forms_inputs.asp-->
-    
-            {% if user.is_authenticated and course.question_set.count > 0 %}
+
+        {% if user.is_authenticated and course.question_set.count > 0 %}
             <div class="w-100">
-                 <hr>
-                 <button class = "btn btn-primary mt-1" type="button" data-toggle="collapse" data-target="#exam" >
-                 Start {{course.title}} Course exam
+                <hr>
+                <button class="btn btn-primary mt-1" type="button" data-toggle="collapse" data-target="#exam">
+                    Start {{course.title}} Course Exam
                 </button>
                 <div id="exam" class="collapse mt-2">
                     <div class="card">
